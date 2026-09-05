@@ -1,0 +1,88 @@
+---
+export interface Props {
+  title?: string
+  description?: string
+}
+const {
+  title = "Reef — Pilotez toute votre exploitation minière, de la mine au port",
+  description = "Reef est la plateforme d'opérations minérales qui relie extraction, transport, usine de flottation, port et ventes — en temps réel. Un seul poste de commandement pour toute votre chaîne.",
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#12161f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+    <style is:global>
+      :root {
+        --brand: #e0a100;
+        --brand-2: #f5c451;
+        --ink: #12161f;
+        --graphite: #1b2233;
+        --paper: #ffffff;
+        --canvas: #f7f8fa;
+        --muted: #5b6472;
+        --line: #e7e9ee;
+        --line-dark: rgba(255, 255, 255, 0.1);
+        --radius: 16px;
+        --maxw: 1140px;
+        --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --display: "Space Grotesk", var(--font);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        font-family: var(--font);
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+      p { margin: 0; }
+      a { color: inherit; text-decoration: none; }
+      img, svg { display: block; max-width: 100%; }
+      .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+      .brand-text { color: var(--brand); }
+      .eyebrow {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--brand);
+      }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 12px;
+        border: 1px solid transparent; cursor: pointer; transition: all .18s ease; white-space: nowrap;
+      }
+      .btn-primary { background: var(--brand); color: #1a1400; }
+      .btn-primary:hover { background: var(--brand-2); transform: translateY(-1px); }
+      .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+      .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+      .btn-ghost-dark { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); color: #fff; }
+      .btn-ghost-dark:hover { background: rgba(255,255,255,.12); }
+      .section { padding: 88px 0; }
+      .section-sm { padding: 56px 0; }
+      @media (max-width: 720px) { .section { padding: 60px 0; } h1 { font-size: 40px; } }
+    </style>
+  </body>
+</html>
