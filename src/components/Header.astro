@@ -1,0 +1,47 @@
+---
+const APP = "https://reef.moaj.info"
+const CONTACT = "/contact"
+const path = Astro.url.pathname
+const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href))
+const links = [
+  { href: "/plateforme", label: "Plateforme" },
+  { href: "/fonctionnalites", label: "Fonctionnalités" },
+  { href: "/solutions", label: "Solutions" },
+  { href: "/tarifs", label: "Tarifs" },
+]
+---
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="/" aria-label="Reef">
+      <svg width="34" height="34" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1B2233"></rect>
+        <g transform="translate(9.6,9.6) scale(0.7)">
+          <polygon points="32,6 58,13 32,20 6,13" fill="#E0A100"></polygon>
+          <polygon points="32,24 58,31 32,38 6,31" fill="#F4F6FA"></polygon>
+          <polygon points="32,42 58,49 32,56 6,49" fill="#F4F6FA" opacity="0.5"></polygon>
+        </g>
+      </svg>
+      <span class="logo-word">Re<span class="brand-text">ef</span></span>
+    </a>
+    <nav class="nav">
+      {links.map((l) => (
+        <a href={l.href} class:list={[{ active: isActive(l.href) }]}>{l.label}</a>
+      ))}
+      <a href={APP}>Connexion</a>
+    </nav>
+    <a class="btn btn-primary hdr-cta" href={CONTACT}>Demander une démo</a>
+  </div>
+</header>
+
+<style>
+  .hdr { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .hdr-in { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; }
+  .logo-word { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+  .nav { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--ink); }
+  .nav a.active { color: var(--brand); }
+  @media (max-width: 900px) { .nav { display: none; } }
+  @media (max-width: 520px) { .hdr-cta { display: none; } }
+</style>

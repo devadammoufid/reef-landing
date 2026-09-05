@@ -1,11 +1,14 @@
 ---
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+
 export interface Props {
   title?: string
   description?: string
 }
 const {
   title = "Reef — Pilotez toute votre exploitation minière, de la mine au port",
-  description = "Reef est la plateforme d'opérations minérales qui relie extraction, transport, usine de flottation, port et ventes — en temps réel. Un seul poste de commandement pour toute votre chaîne.",
+  description = "Reef est la plateforme d'opérations minérales qui relie extraction, transport, usine de flottation, port et ventes — en temps réel.",
 } = Astro.props
 ---
 
@@ -30,7 +33,10 @@ const {
     />
   </head>
   <body>
-    <slot />
+    <Header />
+    <main><slot /></main>
+    <Footer />
+
     <style is:global>
       :root {
         --brand: #e0a100;
@@ -48,41 +54,55 @@ const {
         --display: "Space Grotesk", var(--font);
       }
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-      body {
-        margin: 0;
-        font-family: var(--font);
-        color: var(--ink);
-        background: var(--paper);
-        line-height: 1.6;
-        font-size: 16px;
-        -webkit-font-smoothing: antialiased;
-      }
-      h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
+      body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--paper); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+      h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin: 0; }
       p { margin: 0; }
       a { color: inherit; text-decoration: none; }
       img, svg { display: block; max-width: 100%; }
+      ul { margin: 0; }
+
       .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
       .brand-text { color: var(--brand); }
-      .eyebrow {
-        display: inline-flex; align-items: center; gap: 8px;
-        font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-        color: var(--brand);
-      }
-      .btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 12px;
-        border: 1px solid transparent; cursor: pointer; transition: all .18s ease; white-space: nowrap;
-      }
+      .section { padding: 84px 0; }
+      .section-alt { background: var(--canvas); }
+      .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand); }
+
+      .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 12px; border: 1px solid transparent; cursor: pointer; transition: all .18s ease; white-space: nowrap; }
       .btn-primary { background: var(--brand); color: #1a1400; }
       .btn-primary:hover { background: var(--brand-2); transform: translateY(-1px); }
       .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
       .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
       .btn-ghost-dark { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); color: #fff; }
       .btn-ghost-dark:hover { background: rgba(255,255,255,.12); }
-      .section { padding: 88px 0; }
-      .section-sm { padding: 56px 0; }
-      @media (max-width: 720px) { .section { padding: 60px 0; } h1 { font-size: 40px; } }
+
+      .head { max-width: 660px; margin: 0 auto 48px; text-align: center; }
+      .head.left { margin-left: 0; text-align: left; }
+      .head h2 { font-size: 36px; margin-top: 12px; }
+      .sub { color: var(--muted); font-size: 18px; margin-top: 14px; }
+
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 640px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+      .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: all .18s ease; }
+      .card:hover { border-color: var(--brand); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(18,22,31,.06); }
+      .card h3 { font-size: 20px; margin-bottom: 8px; }
+      .card p { color: var(--muted); font-size: 15px; }
+
+      .ticks { list-style: none; padding: 0; display: grid; gap: 12px; }
+      .ticks li { position: relative; padding-left: 30px; font-weight: 500; }
+      .ticks li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 6px; background: var(--brand); color: #1a1400; font-size: 12px; font-weight: 800; display: grid; place-items: center; }
+
+      /* Compact dark hero for interior pages */
+      .pagehero { position: relative; background: #12161f; color: #fff; overflow: hidden; padding: 72px 0 60px; }
+      .pagehero .grid { position: absolute; inset: 0; opacity: .5; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 40%, transparent 78%); mask-image: radial-gradient(ellipse at 50% 0%, #000 40%, transparent 78%); }
+      .pagehero .glow { position: absolute; top: -120px; right: -60px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(224,161,0,.26), transparent 60%); filter: blur(20px); pointer-events: none; }
+      .pagehero .inner { position: relative; max-width: 720px; }
+      .pagehero h1 { font-size: 46px; margin-top: 16px; }
+      .pagehero p { color: rgba(255,255,255,.65); font-size: 19px; margin-top: 18px; }
+      @media (max-width: 720px) { .head h2 { font-size: 28px; } .pagehero h1 { font-size: 34px; } .section { padding: 56px 0; } }
     </style>
   </body>
 </html>

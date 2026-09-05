@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro"
+const CONTACT = "/contact"
+
+const modules = [
+  { id: "dashboard", tag: "Pilotage", t: "Tableau de bord", d: "Le poste de commandement de la direction. Toute la chaîne agrégée en direct, avec les indicateurs qui comptent en haut de page.",
+    items: ["Flux de valeur mine → port en une vue", "KPI temps réel : production, récupération, expédié, pipeline", "Graphiques de tendance et mix minéral", "Flux d'activité et alertes opérationnelles"] },
+  { id: "extraction", tag: "Amont", t: "Extraction", d: "Le suivi quotidien de vos sites miniers : combien, où, avec quoi.",
+    items: ["Rapports d'extraction par jour et par site", "Tonnage par matériau (cuivre, zinc, stérile…)", "Équipements et équipes mobilisés", "Répartition et tendances par site"] },
+  { id: "transport", tag: "Logistique", t: "Transport", d: "Chaque rotation tracée, de la mine à l'usine et au port.",
+    items: ["Rotations avec origine, destination, charge", "Véhicule et chauffeur par trajet", "Tonnage transporté par destination", "Taux de remplissage de la flotte"] },
+  { id: "usine", tag: "Cœur métallurgique", t: "Usine / Flottation", d: "Le rendement de votre usine, circuit par circuit. La récupération sous contrôle.",
+    items: ["Alimentation, teneur d'entrée et concentré produit", "Taux de récupération métallurgique par circuit", "Bilan matière et teneur des rejets", "Runs planifiés, en cours et terminés"] },
+  { id: "production", tag: "Qualité", t: "Production", d: "Vos lots, leurs teneurs et leur conformité — sans ambiguïté.",
+    items: ["Lots produits avec références et lignes", "Teneurs et statut qualité", "Taux de conformité", "Avancement par lot"] },
+  { id: "port", tag: "Export", t: "Port", d: "La logistique d'expédition, du quai au navire.",
+    items: ["Navires, quais et progression du chargement", "Tonnage expédié par destination", "Statut des expéditions", "Vue export consolidée"] },
+  { id: "stocks", tag: "Ressources", t: "Stocks & inventaire", d: "Ce que vous avez, où, et ce qui bouge. Sur tous les sites.",
+    items: ["Minerai, concentré, réactifs, carburant", "Niveaux par site (mine, usine, dépôt)", "Mouvements : entrées, sorties, transferts", "Seuils d'alerte et valorisation"] },
+  { id: "ventes", tag: "Commercial", t: "Produits, clients & ventes", d: "La chaîne commerciale reliée à la production réelle.",
+    items: ["Catalogue produits avec teneurs et prix", "Clients : fonderies, négociants, raffineries", "Commandes avec incoterms et valeur", "Pipeline valorisé et chiffre reconnu"] },
+  { id: "personnel", tag: "Équipes", t: "Personnel", d: "Vos équipes par métier, leurs rôles et leurs certifications.",
+    items: ["Agents par département et par rôle", "Certifications et statut", "Effectifs actifs par service", "Vue RH opérationnelle"] },
+  { id: "licences", tag: "Plateforme", t: "Multi-sites & licences", d: "La couche qui fait de Reef une vraie plateforme, pas un simple logiciel.",
+    items: ["Données isolées par client et par site", "Marque blanche : nom, logo, couleurs", "Gestion des accès par rôle", "Licences annuelles gérées par le fournisseur"] },
+]
+---
+
+<Layout title="Fonctionnalités — Reef" description="Tous les modules Reef : extraction, transport, flottation, production, port, stocks, ventes, personnel et plateforme multi-sites.">
+  <section class="pagehero">
+    <div class="grid"></div><div class="glow"></div>
+    <div class="wrap inner">
+      <span class="eyebrow">Fonctionnalités</span>
+      <h1>Chaque métier a son module. Tous parlent la même langue.</h1>
+      <p>Dix modules reliés autour d'une seule donnée. Vous n'assemblez pas dix outils — vous en pilotez un seul.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="mods">
+        {modules.map((m) => (
+          <div class="mod" id={m.id}>
+            <div class="mod-left">
+              <span class="mod-tag">{m.tag}</span>
+              <h2>{m.t}</h2>
+              <p>{m.d}</p>
+            </div>
+            <ul class="ticks mod-items">{m.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta-in">
+      <h2>Un seul outil. Toute votre chaîne.</h2>
+      <p>Voyez vos propres modules en action lors d'une démo guidée.</p>
+      <a class="btn btn-primary" href={CONTACT}>Demander une démo</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .mods { display: grid; gap: 18px; }
+  .mod { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; scroll-margin-top: 90px; }
+  .mod:hover { border-color: var(--brand); }
+  .mod-tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); background: rgba(224,161,0,.1); padding: 4px 10px; border-radius: 999px; }
+  .mod h2 { font-size: 26px; margin: 12px 0 10px; }
+  .mod-left p { color: var(--muted); font-size: 16px; }
+  .mod-items li { font-weight: 400; color: var(--ink); font-size: 15px; }
+  @media (max-width: 760px) { .mod { grid-template-columns: 1fr; gap: 20px; padding: 24px; } }
+
+  .cta { background: #12161f; color: #fff; text-align: center; padding: 80px 0; }
+  .cta-in { max-width: 620px; margin: 0 auto; }
+  .cta h2 { font-size: 34px; }
+  .cta p { color: rgba(255,255,255,.6); font-size: 17px; margin: 14px 0 28px; }
+</style>

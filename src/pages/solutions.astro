@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro"
+const CONTACT = "/contact"
+
+const solutions = [
+  {
+    tag: "Usines de traitement",
+    t: "Reprenez le contrôle de votre récupération.",
+    pain: "La récupération se découvre en fin de mois, les stocks de réactifs se gèrent au feeling, et la production n'est jamais tout à fait raccord avec les ventes.",
+    gains: ["Récupération suivie circuit par circuit, en direct", "Stocks minerai / concentré / réactifs sur tous les sites", "Production et qualité reliées aux commandes", "Rapports de direction prêts, sans consolidation manuelle"],
+  },
+  {
+    tag: "Sites d'extraction",
+    t: "Du terrain au tableau de bord, sans ressaisie.",
+    pain: "Les tonnages transitent par des carnets et des tableurs, et l'aval attend l'info pendant des jours.",
+    gains: ["Rapports d'extraction journaliers par site", "Tonnage par matériau et par équipement", "Transport et rotations tracés jusqu'à l'usine", "L'aval alimenté en temps réel"],
+  },
+  {
+    tag: "Groupes multi-sites",
+    t: "Toutes vos exploitations, une seule vérité.",
+    pain: "Chaque site a son outil, son tableur, sa version des chiffres. La consolidation groupe est un cauchemar mensuel.",
+    gains: ["Chaque site cloisonné, ses données protégées", "Consolidation groupe automatique pour la direction", "Accès par rôle et par site", "Une plateforme à votre marque"],
+  },
+  {
+    tag: "Négociants & traders",
+    t: "Le pipeline commercial adossé à la production réelle.",
+    pain: "Les engagements commerciaux et la capacité réelle de production vivent dans deux mondes séparés.",
+    gains: ["Commandes, incoterms et valeur de pipeline", "Vue de la production disponible à la vente", "Clients et catalogue centralisés", "Chiffre reconnu vs à venir"],
+  },
+]
+---
+
+<Layout title="Solutions — Reef" description="Reef pour les usines de traitement, les sites d'extraction, les groupes multi-sites et les négociants.">
+  <section class="pagehero">
+    <div class="grid"></div><div class="glow"></div>
+    <div class="wrap inner">
+      <span class="eyebrow">Solutions</span>
+      <h1>Fait pour ceux qui font tourner la mine.</h1>
+      <p>Que vous exploitiez un site ou vingt, que vous traitiez ou que vous négociiez — Reef s'adapte à votre métier.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sols">
+        {solutions.map((s, i) => (
+          <div class="sol">
+            <div class="sol-text">
+              <span class="mod-tag">{s.tag}</span>
+              <h2>{s.t}</h2>
+              <p class="pain"><b>Le problème.</b> {s.pain}</p>
+              <ul class="ticks">{s.gains.map((g) => <li>{g}</li>)}</ul>
+            </div>
+            <div class="sol-badge"><span>{String(i + 1).padStart(2, "0")}</span></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta-in">
+      <h2>Votre métier, votre plateforme.</h2>
+      <p>Parlons de votre exploitation et de ce que Reef changerait pour vos équipes.</p>
+      <a class="btn btn-primary" href={CONTACT}>Demander une démo</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sols { display: grid; gap: 18px; }
+  .sol { display: grid; grid-template-columns: 1fr 120px; gap: 24px; align-items: center; border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; }
+  .sol:hover { border-color: var(--brand); }
+  .mod-tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); background: rgba(224,161,0,.1); padding: 4px 10px; border-radius: 999px; }
+  .sol h2 { font-size: 26px; margin: 12px 0 12px; }
+  .pain { color: var(--muted); font-size: 15.5px; margin-bottom: 18px; }
+  .pain b { color: var(--ink); }
+  .ticks li { font-weight: 400; font-size: 15px; }
+  .sol-badge { display: grid; place-items: center; }
+  .sol-badge span { font-family: var(--display); font-weight: 700; font-size: 40px; color: var(--line); }
+  @media (max-width: 700px) { .sol { grid-template-columns: 1fr; } .sol-badge { display: none; } }
+
+  .cta { background: #12161f; color: #fff; text-align: center; padding: 80px 0; }
+  .cta-in { max-width: 620px; margin: 0 auto; }
+  .cta h2 { font-size: 34px; }
+  .cta p { color: rgba(255,255,255,.6); font-size: 17px; margin: 14px 0 28px; }
+</style>

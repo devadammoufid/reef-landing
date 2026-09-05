@@ -1,0 +1,77 @@
+---
+const APP = "https://reef.moaj.info"
+const cols = [
+  {
+    title: "Produit",
+    links: [
+      { href: "/plateforme", label: "La plateforme" },
+      { href: "/fonctionnalites", label: "Fonctionnalités" },
+      { href: "/solutions", label: "Solutions" },
+      { href: "/tarifs", label: "Tarifs" },
+    ],
+  },
+  {
+    title: "Chaîne de valeur",
+    links: [
+      { href: "/fonctionnalites#extraction", label: "Extraction" },
+      { href: "/fonctionnalites#usine", label: "Flottation" },
+      { href: "/fonctionnalites#port", label: "Port" },
+      { href: "/fonctionnalites#ventes", label: "Ventes" },
+    ],
+  },
+  {
+    title: "Entreprise",
+    links: [
+      { href: "/contact", label: "Contact" },
+      { href: "/contact", label: "Demander une démo" },
+      { href: APP, label: "Connexion" },
+    ],
+  },
+]
+---
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div class="ftr-brand">
+      <a class="logo" href="/" aria-label="Reef">
+        <svg width="30" height="30" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#1B2233"></rect>
+          <g transform="translate(9.6,9.6) scale(0.7)">
+            <polygon points="32,6 58,13 32,20 6,13" fill="#E0A100"></polygon>
+            <polygon points="32,24 58,31 32,38 6,31" fill="#F4F6FA"></polygon>
+            <polygon points="32,42 58,49 32,56 6,49" fill="#F4F6FA" opacity="0.5"></polygon>
+          </g>
+        </svg>
+        <span class="logo-word" style="color:#fff">Re<span class="brand-text">ef</span></span>
+      </a>
+      <p>La plateforme d'opérations minérales — de la mine au port, en temps réel.</p>
+    </div>
+    <div class="ftr-cols">
+      {cols.map((c) => (
+        <div class="ftr-col">
+          <h4>{c.title}</h4>
+          {c.links.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="wrap ftr-legal">
+    <span>© {new Date().getFullYear()} Reef — Mineral Operations Platform.</span>
+    <span>Conçu pour l'industrie minière.</span>
+  </div>
+</footer>
+
+<style>
+  .ftr { background: #0e1117; color: rgba(255,255,255,.6); padding: 60px 0 28px; }
+  .ftr-in { display: flex; justify-content: space-between; gap: 48px; flex-wrap: wrap; padding-bottom: 36px; border-bottom: 1px solid var(--line-dark); }
+  .logo { display: inline-flex; align-items: center; gap: 10px; }
+  .logo-word { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+  .ftr-brand p { max-width: 300px; font-size: 14px; margin-top: 14px; }
+  .ftr-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+  .ftr-col { display: flex; flex-direction: column; gap: 10px; }
+  .ftr-col h4 { font-family: var(--display); font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: #fff; margin: 0 0 4px; }
+  .ftr-col a { font-size: 14px; }
+  .ftr-col a:hover { color: var(--brand); }
+  .ftr-legal { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,.4); padding-top: 24px; }
+  @media (max-width: 680px) { .ftr-cols { gap: 32px; } }
+</style>

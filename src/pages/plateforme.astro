@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro"
+const CONTACT = "/contact"
+
+const stages = [
+  { n: "01", t: "Extraction", cap: "Ce que Reef capture", items: ["Tonnage extrait par site et par matériau", "Équipements et équipes mobilisés", "Sites miniers et rapports journaliers"], feeds: "Alimente le transport et le bilan de production." },
+  { n: "02", t: "Transport", cap: "Ce que Reef capture", items: ["Rotations mine → usine → port", "Charge, véhicule et chauffeur", "Tonnage transporté par destination"], feeds: "Relie l'extraction à l'usine et au port." },
+  { n: "03", t: "Flottation / Usine", cap: "Ce que Reef capture", items: ["Alimentation et teneur d'entrée", "Concentré produit et sa teneur", "Taux de récupération par circuit"], feeds: "Le cœur métallurgique — nourrit la production." },
+  { n: "04", t: "Production", cap: "Ce que Reef capture", items: ["Lots produits et références", "Teneurs et statut qualité", "Conformité et avancement"], feeds: "Prépare les stocks et les expéditions." },
+  { n: "05", t: "Port", cap: "Ce que Reef capture", items: ["Navires, quais et chargement", "Tonnage expédié par destination", "Statut des expéditions"], feeds: "Ferme la boucle logistique jusqu'à l'export." },
+  { n: "06", t: "Ventes", cap: "Ce que Reef capture", items: ["Produits, clients et commandes", "Incoterms et valeur du pipeline", "Chiffre reconnu vs à venir"], feeds: "Relie le commercial à la production réelle." },
+]
+
+const steps = [
+  { n: "1", t: "Connectez vos sites", d: "Vos exploitations, votre usine, votre port. Chacun cloisonné, chacun à sa place." },
+  { n: "2", t: "Saisissez ou importez", d: "Rapports terrain, tonnages, runs de flottation, commandes — sur le web, depuis n'importe quel poste." },
+  { n: "3", t: "Pilotez en temps réel", d: "Le tableau de bord agrège tout : récupération, stocks, expéditions, pipeline. En direct." },
+  { n: "4", t: "Décidez & exportez", d: "Des indicateurs prêts pour la direction, exportables. Une seule version des chiffres." },
+]
+
+const pillars = [
+  { t: "Temps réel", d: "La donnée remonte en continu du terrain au tableau de bord. Fini le reporting de la semaine dernière." },
+  { t: "Données isolées", d: "Chaque client, chaque site, dans son espace étanche. Vos chiffres ne croisent jamais ceux d'un autre." },
+  { t: "Accès par rôle", d: "Direction, usine, transport, port : chaque équipe voit ce qui la concerne, rien de plus." },
+  { t: "Cloud, zéro install", d: "Accessible depuis un navigateur, sur site ou au bureau. Rien à installer, rien à maintenir." },
+  { t: "Multi-sites", d: "Une exploitation ou vingt : une seule plateforme, consolidée pour la direction." },
+  { t: "Marque blanche", d: "Votre nom, votre logo, vos couleurs. Vos équipes utilisent votre outil." },
+]
+---
+
+<Layout title="La plateforme — Reef" description="Reef relie extraction, transport, flottation, production, port et ventes en une seule plateforme temps réel.">
+  <section class="pagehero">
+    <div class="grid"></div><div class="glow"></div>
+    <div class="wrap inner">
+      <span class="eyebrow">La plateforme</span>
+      <h1>Une chaîne minière, connectée de bout en bout.</h1>
+      <p>De l'extraction à l'expédition, chaque étape alimente la suivante. Reef réunit toute votre exploitation dans un seul écran — et en temps réel.</p>
+    </div>
+  </section>
+
+  <!-- Chain detail -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Le flux, étape par étape</span><h2>Six maillons, une seule chaîne.</h2></div>
+      <div class="stages">
+        {stages.map((s) => (
+          <div class="stage">
+            <div class="stage-head"><span class="chain-n">{s.n}</span><h3>{s.t}</h3></div>
+            <ul class="ticks">{s.items.map((i) => <li>{i}</li>)}</ul>
+            <p class="feeds">→ {s.feeds}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Comment ça marche</span><h2>Opérationnel en quatre temps.</h2></div>
+      <div class="steps">
+        {steps.map((s) => (
+          <div class="step"><span class="step-n">{s.n}</span><div><h3>{s.t}</h3><p>{s.d}</p></div></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Sous le capot</span><h2>Construit pour l'industrie, pas pour la démo.</h2></div>
+      <div class="grid-3">
+        {pillars.map((p) => (<div class="card"><h3>{p.t}</h3><p>{p.d}</p></div>))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta-in">
+      <h2>Voir Reef sur vos opérations.</h2>
+      <p>20 minutes pour parcourir la chaîne complète, de la mine au port.</p>
+      <a class="btn btn-primary" href={CONTACT}>Demander une démo</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .stage { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .stage-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .chain-n { font-family: var(--display); font-weight: 700; font-size: 13px; color: var(--brand); letter-spacing: .1em; }
+  .stage h3 { font-size: 20px; }
+  .stage .ticks li { font-size: 14.5px; font-weight: 400; color: var(--ink); }
+  .feeds { color: var(--muted); font-size: 13.5px; font-style: italic; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); }
+  @media (max-width: 860px) { .stages { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .stages { grid-template-columns: 1fr; } }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .step { display: flex; gap: 14px; }
+  .step-n { flex: none; width: 38px; height: 38px; border-radius: 11px; background: var(--brand); color: #1a1400; font-family: var(--display); font-weight: 700; display: grid; place-items: center; }
+  .step h3 { font-size: 18px; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: 14.5px; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+  .cta { background: #12161f; color: #fff; text-align: center; padding: 80px 0; }
+  .cta-in { max-width: 620px; margin: 0 auto; }
+  .cta h2 { font-size: 34px; }
+  .cta p { color: rgba(255,255,255,.6); font-size: 17px; margin: 14px 0 28px; }
+</style>
