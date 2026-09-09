@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title="Confidentialité — Reef" description="Politique de confidentialité et protection des données (RGPD) de Reef.">
+  <section class="pagehero">
+    <div class="grid"></div><div class="glow"></div>
+    <div class="wrap inner">
+      <span class="eyebrow">RGPD</span>
+      <h1>Politique de confidentialité</h1>
+      <p>Comment Reef collecte, utilise et protège les données — et les droits dont vous disposez.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <article class="legal">
+      <p class="note">Modèle conforme à l'esprit du RGPD, à compléter et à faire valider juridiquement avant publication (notamment l'identité du responsable de traitement et le DPO).</p>
+
+      <h2>1. Responsable du traitement</h2>
+      <p>Le responsable du traitement des données est <b>[Raison sociale]</b>, [adresse]. Pour toute question relative à vos données&nbsp;: <a href="mailto:contact@moaj.info">contact@moaj.info</a>.</p>
+
+      <h2>2. Données que nous traitons</h2>
+      <ul>
+        <li><b>Données de contact</b> — nom, email, société, transmis via nos formulaires de démonstration.</li>
+        <li><b>Données de compte</b> — identifiants et rôles des utilisateurs de la plateforme.</li>
+        <li><b>Données d'exploitation</b> — les données minières saisies par nos clients dans la plateforme, dont ils restent responsables (nous agissons comme sous-traitant).</li>
+        <li><b>Données de mesure d'audience</b> — statistiques agrégées et anonymes, sans cookie.</li>
+      </ul>
+
+      <h2>3. Finalités et bases légales</h2>
+      <ul>
+        <li>Répondre aux demandes de démonstration — <i>intérêt légitime / mesures précontractuelles</i>.</li>
+        <li>Fournir et sécuriser le service — <i>exécution du contrat</i>.</li>
+        <li>Améliorer le site — <i>intérêt légitime</i>, via une mesure d'audience anonyme.</li>
+      </ul>
+
+      <h2>4. Sous-traitants et hébergement</h2>
+      <p>Nous faisons appel à des sous-traitants pour l'hébergement et l'exploitation du service&nbsp;:</p>
+      <ul>
+        <li><b>Neon Inc.</b> — base de données PostgreSQL, région <b>Union européenne (Francfort)</b>.</li>
+        <li><b>Vercel Inc.</b> — hébergement du site et de l'application.</li>
+        <li><b>Railway Corp.</b> — hébergement de l'API.</li>
+        <li><b>Plausible Analytics</b> — mesure d'audience sans cookie, hébergée dans l'UE.</li>
+      </ul>
+      <p>Les transferts éventuels hors UE sont encadrés par les clauses contractuelles types de la Commission européenne.</p>
+
+      <h2>5. Durée de conservation</h2>
+      <p>Les données de prospection sont conservées jusqu'à 3 ans après le dernier contact. Les données d'exploitation sont conservées pour la durée du contrat, puis supprimées ou restituées sur demande.</p>
+
+      <h2>6. Vos droits</h2>
+      <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Vous pouvez les exercer à <a href="mailto:contact@moaj.info">contact@moaj.info</a>, et introduire une réclamation auprès de la CNIL.</p>
+
+      <h2>7. Cookies</h2>
+      <p>Le site n'utilise pas de cookies de suivi. Notre mesure d'audience (Plausible) est anonyme et sans cookie — aucun consentement n'est donc requis à ce titre.</p>
+
+      <h2>8. Sécurité</h2>
+      <p>Les données sont chiffrées en transit (HTTPS), l'accès est protégé par authentification et cloisonné par organisation. Chaque client dispose d'un espace de données isolé.</p>
+
+      <p class="upd">Dernière mise à jour : {new Date().toLocaleDateString("fr-FR")}</p>
+    </article>
+  </section>
+</Layout>

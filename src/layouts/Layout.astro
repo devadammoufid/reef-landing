@@ -10,6 +10,9 @@ const {
   title = "Reef — Pilotez toute votre exploitation minière, de la mine au port",
   description = "Reef est la plateforme d'opérations minérales qui relie extraction, transport, usine de flottation, port et ventes — en temps réel.",
 } = Astro.props
+
+const SITE = "https://reef-landing-one.vercel.app"
+const canonical = new URL(Astro.url.pathname, SITE).href
 ---
 
 <!doctype html>
@@ -21,6 +24,12 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Reef" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Cookieless analytics — no consent banner required. Register the domain in Plausible to activate. -->
+    <script defer data-domain="reef-landing-one.vercel.app" src="https://plausible.io/js/script.js"></script>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -103,6 +112,17 @@ const {
       .pagehero h1 { font-size: 46px; margin-top: 16px; }
       .pagehero p { color: rgba(255,255,255,.65); font-size: 19px; margin-top: 18px; }
       @media (max-width: 720px) { .head h2 { font-size: 28px; } .pagehero h1 { font-size: 34px; } .section { padding: 56px 0; } }
+
+      /* Legal / prose pages */
+      .legal { max-width: 760px; margin: 0 auto; }
+      .legal .note { background: rgba(224,161,0,.08); border: 1px solid rgba(224,161,0,.28); color: #8a6200; border-radius: 12px; padding: 12px 16px; font-size: 13.5px; margin-bottom: 32px; }
+      .legal h2 { font-size: 22px; margin: 34px 0 12px; }
+      .legal h3 { font-size: 17px; margin: 22px 0 8px; }
+      .legal p { color: var(--muted); margin-bottom: 12px; line-height: 1.7; }
+      .legal ul { margin: 0 0 16px; padding-left: 22px; color: var(--muted); display: grid; gap: 7px; line-height: 1.6; }
+      .legal b { color: var(--ink); }
+      .legal a { color: var(--brand); font-weight: 600; }
+      .legal .upd { color: var(--muted); font-size: 13px; margin-top: 34px; opacity: .8; }
     </style>
   </body>
 </html>

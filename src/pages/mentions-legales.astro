@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title="Mentions légales — Reef" description="Mentions légales du site Reef.">
+  <section class="pagehero">
+    <div class="grid"></div><div class="glow"></div>
+    <div class="wrap inner">
+      <span class="eyebrow">Informations légales</span>
+      <h1>Mentions légales</h1>
+      <p>Éditeur, hébergement et propriété intellectuelle du site Reef.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <article class="legal">
+      <p class="note">Modèle à compléter et à faire valider. Remplacez les champs entre crochets par vos informations réelles avant publication.</p>
+
+      <h2>Éditeur du site</h2>
+      <p>Le site Reef est édité par <b>[Raison sociale]</b>, [forme juridique] au capital de [montant] €, immatriculée au RCS de [ville] sous le numéro <b>[SIRET / RCS]</b>.</p>
+      <ul>
+        <li>Siège social : [Adresse complète]</li>
+        <li>Directeur de la publication : [Nom du responsable]</li>
+        <li>Email : contact@moaj.info</li>
+        <li>TVA intracommunautaire : [FR…]</li>
+      </ul>
+
+      <h2>Hébergement</h2>
+      <p>Le site et l'application sont hébergés par&nbsp;:</p>
+      <ul>
+        <li><b>Vercel Inc.</b> — hébergement du site et de l'application (San Francisco, CA, États-Unis).</li>
+        <li><b>Railway Corp.</b> — hébergement de l'API applicative.</li>
+        <li><b>Neon Inc.</b> — base de données PostgreSQL (région UE — Francfort).</li>
+      </ul>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble des éléments du site (marque « Reef », logo, textes, interfaces, code) est protégé par le droit de la propriété intellectuelle et demeure la propriété exclusive de l'éditeur. Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite préalable, est interdite.</p>
+
+      <h2>Responsabilité</h2>
+      <p>L'éditeur s'efforce d'assurer l'exactitude des informations diffusées sur ce site, sans pouvoir en garantir l'exhaustivité. Les informations sont fournies à titre indicatif et sont susceptibles d'évoluer.</p>
+
+      <h2>Contact</h2>
+      <p>Pour toute question relative au site&nbsp;: <a href="mailto:contact@moaj.info">contact@moaj.info</a>.</p>
+
+      <p class="upd">Dernière mise à jour : {new Date().toLocaleDateString("fr-FR")}</p>
+    </article>
+  </section>
+</Layout>
