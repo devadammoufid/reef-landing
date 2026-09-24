@@ -1,5 +1,6 @@
 ---
 const APP = "https://reef.moaj.info"
+const DEMO = "https://reef.moaj.info/login"
 const CONTACT = "/contact"
 const path = Astro.url.pathname
 const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href))
@@ -24,13 +25,32 @@ const links = [
       </svg>
       <span class="logo-word">Re<span class="brand-text">ef</span></span>
     </a>
+
     <nav class="nav">
       {links.map((l) => (
         <a href={l.href} class:list={[{ active: isActive(l.href) }]}>{l.label}</a>
       ))}
       <a href={APP}>Connexion</a>
     </nav>
-    <a class="btn btn-primary hdr-cta" href={CONTACT}>Demander une démo</a>
+
+    <div class="hdr-right">
+      <a class="btn btn-primary hdr-cta" href={CONTACT}>Demander une démo</a>
+
+      <!-- CSS-only mobile menu: no JS needed -->
+      <details class="mnav">
+        <summary aria-label="Menu">
+          <span class="bars" aria-hidden="true"></span>
+        </summary>
+        <div class="mnav-panel">
+          {links.map((l) => (
+            <a href={l.href} class:list={[{ active: isActive(l.href) }]}>{l.label}</a>
+          ))}
+          <a href={DEMO}>Essayer la démo en direct</a>
+          <a href={APP}>Connexion</a>
+          <a class="btn btn-primary mnav-cta" href={CONTACT}>Demander une démo</a>
+        </div>
+      </details>
+    </div>
   </div>
 </header>
 
@@ -42,6 +62,33 @@ const links = [
   .nav { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--muted); }
   .nav a:hover, .nav a.active { color: var(--ink); }
   .nav a.active { color: var(--brand); }
-  @media (max-width: 900px) { .nav { display: none; } }
-  @media (max-width: 520px) { .hdr-cta { display: none; } }
+  .hdr-right { display: flex; align-items: center; gap: 10px; }
+
+  /* Mobile menu */
+  .mnav { display: none; position: relative; }
+  .mnav summary { list-style: none; cursor: pointer; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 10px; }
+  .mnav summary::-webkit-details-marker { display: none; }
+  .bars, .bars::before, .bars::after { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); content: ""; }
+  .bars { position: relative; }
+  .bars::before { position: absolute; top: -6px; }
+  .bars::after { position: absolute; top: 6px; }
+  .mnav[open] summary { border-color: var(--brand); }
+
+  .mnav-panel {
+    position: absolute; right: 0; top: calc(100% + 10px); min-width: 232px;
+    display: flex; flex-direction: column; gap: 2px;
+    background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 10px;
+    box-shadow: 0 20px 48px -18px rgba(18,22,31,.28);
+  }
+  .mnav-panel a { padding: 11px 12px; border-radius: 9px; font-size: 15px; font-weight: 500; color: var(--muted); }
+  .mnav-panel a:hover { background: var(--canvas); color: var(--ink); }
+  .mnav-panel a.active { color: var(--brand); }
+  .mnav-cta { margin-top: 8px; justify-content: center; color: #1a1400 !important; }
+  .mnav-cta:hover { color: #1a1400 !important; }
+
+  @media (max-width: 900px) {
+    .nav { display: none; }
+    .mnav { display: block; }
+  }
+  @media (max-width: 560px) { .hdr-cta { display: none; } }
 </style>

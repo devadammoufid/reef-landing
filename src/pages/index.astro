@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import Shot from "../components/Shot.astro"
 
 const APP = "https://reef.moaj.info"
+const DEMO = "https://reef.moaj.info/login"
 const CONTACT = "/contact"
 
 const chain = [
@@ -13,6 +15,66 @@ const chain = [
   { n: "06", t: "Ventes", d: "Commandes, incoterms et pipeline commercial valorisé." },
 ]
 
+const tour = [
+  {
+    id: "usine",
+    eyebrow: "Usine de flottation",
+    title: "La récupération, circuit par circuit.",
+    body: "Le bilan métallurgique se lit le jour même, pas à la clôture du mois. Alimentation, concentré, teneur et récupération par circuit — la dérive se voit quand elle commence, pas quand elle a coûté des tonnes.",
+    bullets: ["Récupération et débit par circuit", "Alimentation vs concentré, jour par jour", "Historique des runs de traitement"],
+    img: "/shots/usine.webp",
+    alt: "Module usine de flottation de Reef : récupération moyenne 91,4 %, bilan métallurgique quotidien et performance par circuit.",
+    url: "reef.moaj.info/usine",
+  },
+  {
+    id: "transport",
+    eyebrow: "Extraction & transport",
+    title: "Chaque rotation, du front de taille au quai.",
+    body: "Ce qui sort de la mine et ce qui arrive à l'usine, réconciliés. Tonnage par site, rotations par destination, charge moyenne, véhicule et chauffeur — les écarts se voient immédiatement.",
+    bullets: ["Tonnage extrait par site et par matériau", "Rotations mine → usine → port", "Flotte, charge moyenne et chauffeurs"],
+    img: "/shots/transport.webp",
+    alt: "Module transport de Reef : tonnage transporté, rotations quotidiennes, répartition usine/port et journal des rotations.",
+    url: "reef.moaj.info/transport",
+  },
+  {
+    id: "port",
+    eyebrow: "Port & expédition",
+    title: "Les navires, les quais, le tonnage à bord.",
+    body: "Le dernier maillon est souvent le plus opaque. Reef affiche l'avancement de chargement poste par poste, le tonnage expédié et la répartition par destination export.",
+    bullets: ["Postes à quai et avancement de chargement", "Tonnage expédié par destination", "Expéditions planifiées, en cours, parties"],
+    img: "/shots/port.webp",
+    alt: "Module port et expédition de Reef : 10 400 T expédiées, chargement des navires par quai et tonnage par destination export.",
+    url: "reef.moaj.info/port",
+  },
+  {
+    id: "ventes",
+    eyebrow: "Commandes & ventes",
+    title: "Le commercial branché sur la production réelle.",
+    body: "Carnet de commandes, pipeline actif, revenu reconnu et tonnage sous contrat — reliés à ce que l'usine produit vraiment. Vous savez ce que vous pouvez promettre.",
+    bullets: ["Valeur du carnet et pipeline par statut", "Clients, produits, prix et incoterms", "Tonnage vendu vs tonnage disponible"],
+    img: "/shots/commandes.webp",
+    alt: "Module commandes de Reef : carnet de 170,4 M$, pipeline par statut, top clients et détail des commandes de vente.",
+    url: "reef.moaj.info/commandes",
+  },
+]
+
+const secondary = [
+  {
+    t: "Analytique",
+    d: "Les tendances de toute la chaîne, sur la période de votre choix — prêtes pour le comité de direction.",
+    img: "/shots/analytique.webp",
+    alt: "Module analytique de Reef : tendances consolidées de la chaîne de valeur.",
+    url: "reef.moaj.info/analytique",
+  },
+  {
+    t: "Stocks & déchets",
+    d: "Minerai, concentré, réactifs, carburant : niveaux par site et mouvements, sans un seul tableur.",
+    img: "/shots/inventaire.webp",
+    alt: "Module inventaire de Reef : niveaux de stock par site et mouvements.",
+    url: "reef.moaj.info/inventaire",
+  },
+]
+
 const features = [
   { t: "Temps réel, pas rétroviseur", d: "La donnée remonte du terrain au tableau de bord en continu. Vous décidez sur des chiffres d'aujourd'hui." },
   { t: "La récupération sous contrôle", d: "Le rendement métallurgique de chaque circuit, et la dérive repérée avant qu'elle ne coûte des tonnes." },
@@ -20,6 +82,21 @@ const features = [
   { t: "De la commande à l'expédition", d: "Produits, clients, commandes et valeur du pipeline, reliés à la production réelle." },
   { t: "Rapports & exports", d: "Des indicateurs prêts pour la direction, exportables. Fini les consolidations du lundi matin." },
   { t: "Rôles & accès", d: "Chaque équipe voit ce qui la concerne. Direction, usine, transport, port." },
+]
+
+const roles = [
+  { t: "Direction générale", d: "Une seule version des chiffres, consolidée sur tous les sites. Plus de réunion passée à départager deux tableurs." },
+  { t: "Directeur d'usine", d: "La récupération par circuit, en direct. La dérive métallurgique se traite le jour même." },
+  { t: "Responsable logistique", d: "Rotations, flotte et quais sur le même écran. Le goulot d'étranglement devient visible." },
+  { t: "Direction commerciale", d: "Le pipeline valorisé et le tonnage disponible. Vous engagez ce que vous pouvez livrer." },
+]
+
+const faq = [
+  { q: "Faut-il installer quelque chose sur site ?", a: "Non. Reef est une plateforme web : vos équipes s'y connectent depuis un navigateur, à la mine comme au siège. Rien à installer, rien à maintenir." },
+  { q: "Nos données sont-elles isolées ?", a: "Oui. Chaque client — et chaque site — dispose d'un espace cloisonné. Vos chiffres ne croisent jamais ceux d'une autre exploitation." },
+  { q: "Combien de temps pour démarrer ?", a: "Un site simple peut être opérationnel en quelques jours. Les déploiements multi-sites font l'objet d'un accompagnement dédié." },
+  { q: "Peut-on reprendre nos tableurs existants ?", a: "Oui. On cadre vos sources actuelles — tableurs, systèmes en place — et le plan de reprise, pendant la démo." },
+  { q: "Peut-on mettre notre marque ?", a: "Oui : votre nom, votre logo, vos couleurs. Vos équipes ouvrent votre outil, pas le nôtre." },
 ]
 ---
 
@@ -30,33 +107,78 @@ const features = [
     <div class="hero-glow"></div>
     <div class="wrap hero-in">
       <span class="eyebrow">Plateforme d'opérations minérales</span>
-      <h1>Pilotez toute votre exploitation,<br /><span class="brand-text">de la mine au port.</span></h1>
+      <h1>Toute votre exploitation minière,<br /><span class="brand-text">sur un seul écran.</span></h1>
       <p class="lead">
-        Extraction, transport, usine de flottation, production, port et ventes — une seule plateforme,
-        en temps réel. Reef, ce n'est pas un ERP de plus : c'est votre poste de commandement.
+        Extraction, transport, usine de flottation, production, port et ventes. Reef relie chaque maillon
+        de votre chaîne et vous donne les chiffres d'aujourd'hui — pas ceux de la fin du mois.
       </p>
       <div class="hero-cta">
         <a class="btn btn-primary" href={CONTACT}>Demander une démo</a>
-        <a class="btn btn-ghost-dark" href="/plateforme">Découvrir la plateforme →</a>
+        <a class="btn btn-ghost-dark" href={DEMO}>Essayer la démo en direct →</a>
       </div>
+      <p class="hero-note">Accès démo en un clic · aucune installation · données de démonstration</p>
       <div class="hero-stats">
-        <div><b>Mine → Port</b><span>Chaîne complète, une seule vue</span></div>
-        <div><b>Temps réel</b><span>Zéro tableur, zéro angle mort</span></div>
-        <div><b>Multi-sites</b><span>Chaque exploitation, à votre marque</span></div>
+        <div><b>6 modules</b><span>Mine, transport, usine, production, port, ventes</span></div>
+        <div><b>Temps réel</b><span>La donnée du terrain remonte en continu</span></div>
+        <div><b>Multi-sites</b><span>Chaque exploitation cloisonnée, à votre marque</span></div>
       </div>
     </div>
   </section>
 
+  <!-- Hero screenshot, straddling the dark hero and the light band below -->
+  <section class="shot-strip">
+    <div class="wrap">
+      <Shot
+        src="/shots/dashboard.webp"
+        alt="Tableau de bord Reef : vue d'ensemble temps réel de la chaîne mine → port, avec récupération usine, tonnage expédié et pipeline commercial."
+        url="reef.moaj.info"
+        eager={true}
+      />
+    </div>
+  </section>
+
+  <!-- Proof band -->
+  <section class="band">
+    <div class="wrap band-in">
+      <div class="band-item"><b>91,4 %</b><span>Récupération usine, par circuit</span></div>
+      <div class="band-item"><b>10 400 T</b><span>Expédiées au port, suivies au quai</span></div>
+      <div class="band-item"><b>103,2 M$</b><span>Pipeline commercial valorisé</span></div>
+      <div class="band-item"><b>4 sites</b><span>Consolidés dans une seule console</span></div>
+    </div>
+    <p class="band-note">Chiffres issus de l'environnement de démonstration, ouvert à tous.</p>
+  </section>
+
   <!-- Problem -->
   <section class="section">
-    <div class="wrap problem">
-      <span class="eyebrow">Le vrai problème</span>
-      <h2>Le minerai bouge. Vos données, non.</h2>
-      <p class="sub">
-        Les tonnages dorment dans des tableurs, la récupération se découvre en fin de mois, et personne
-        n'a la même version des chiffres. Reef relie chaque étape de votre chaîne pour que vous arrêtiez
-        de piloter à l'aveugle.
-      </p>
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Le vrai problème</span>
+        <h2>Le minerai bouge. Vos données, non.</h2>
+        <p class="sub">
+          Les tonnages dorment dans des tableurs, la récupération se découvre en fin de mois, et personne
+          n'a la même version des chiffres.
+        </p>
+      </div>
+      <div class="compare">
+        <div class="cmp cmp-bad">
+          <span class="cmp-tag">Sans Reef</span>
+          <ul>
+            <li>Un tableur par service, trois versions du même tonnage</li>
+            <li>La dérive de récupération découverte à la clôture</li>
+            <li>Le commercial engage un tonnage que l'usine n'a pas</li>
+            <li>Deux jours de consolidation avant chaque comité</li>
+          </ul>
+        </div>
+        <div class="cmp cmp-good">
+          <span class="cmp-tag">Avec Reef</span>
+          <ul>
+            <li>Une seule source, la même pour la mine et le siège</li>
+            <li>La récupération par circuit, visible le jour même</li>
+            <li>Le pipeline branché sur la production réelle</li>
+            <li>Les indicateurs de direction, prêts et exportables</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -81,8 +203,44 @@ const features = [
     </div>
   </section>
 
+  <!-- Product tour -->
+  <section class="section" id="produit">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Dans la plateforme</span>
+        <h2>Voilà à quoi ça ressemble.</h2>
+        <p class="sub">Pas de maquette : ce sont les écrans de Reef, avec des données de démonstration.</p>
+      </div>
+    </div>
+    {tour.map((t, i) => (
+      <div class="wrap tour" data-flip={i % 2 === 1}>
+        <div class="tour-txt">
+          <span class="eyebrow">{t.eyebrow}</span>
+          <h3>{t.title}</h3>
+          <p>{t.body}</p>
+          <ul class="ticks">{t.bullets.map((b) => <li>{b}</li>)}</ul>
+        </div>
+        <div class="tour-img">
+          <Shot src={t.img} alt={t.alt} url={t.url} class="on-light" />
+        </div>
+      </div>
+    ))}
+    <div class="wrap sec-grid">
+      {secondary.map((s) => (
+        <div class="sec">
+          <Shot src={s.img} alt={s.alt} url={s.url} class="on-light" />
+          <h3>{s.t}</h3>
+          <p>{s.d}</p>
+        </div>
+      ))}
+    </div>
+    <div class="wrap center">
+      <a class="btn btn-primary" href={DEMO}>Ouvrir la démo en direct →</a>
+    </div>
+  </section>
+
   <!-- Features -->
-  <section class="section">
+  <section class="section section-alt">
     <div class="wrap">
       <div class="head"><span class="eyebrow">Ce que vous gagnez</span><h2>Moins de tableurs. Plus de décisions.</h2></div>
       <div class="feats">
@@ -91,6 +249,18 @@ const features = [
         ))}
       </div>
       <div class="center"><a class="btn btn-ghost" href="/fonctionnalites">Explorer les fonctionnalités →</a></div>
+    </div>
+  </section>
+
+  <!-- Roles -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Pour qui</span><h2>Chaque métier y trouve son écran.</h2></div>
+      <div class="roles">
+        {roles.map((r) => (
+          <div class="role"><h3>{r.t}</h3><p>{r.d}</p></div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -120,38 +290,119 @@ const features = [
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap faq-in">
+      <div class="head left"><span class="eyebrow">Questions fréquentes</span><h2>Ce qu'on nous demande le plus.</h2></div>
+      <div class="faq">
+        {faq.map((f) => (
+          <details>
+            <summary>{f.q}<span class="chev" aria-hidden="true"></span></summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
   <section class="cta">
     <div class="hero-glow"></div>
     <div class="wrap cta-in">
       <h2>Prêt à reprendre le contrôle de votre chaîne ?</h2>
-      <p>Une démo de 20 minutes suffit pour voir vos opérations, de la mine au port, dans un seul écran.</p>
+      <p>Une démo de 20 minutes suffit pour voir vos opérations, de la mine au port, dans un seul écran. Ou entrez directement dans la plateforme — l'accès de démonstration est ouvert.</p>
       <div class="hero-cta center-cta">
         <a class="btn btn-primary" href={CONTACT}>Demander une démo</a>
-        <a class="btn btn-ghost-dark" href={APP}>Explorer la plateforme →</a>
+        <a class="btn btn-ghost-dark" href={DEMO}>Essayer la démo en direct →</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .hero { position: relative; background: #12161f; color: #fff; overflow: hidden; padding: 96px 0 84px; }
+  /* ---------- Hero ---------- */
+  .hero { position: relative; background: #12161f; color: #fff; overflow: hidden; padding: 96px 0 0; }
   .hero-grid { position: absolute; inset: 0; opacity: .5; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 40%, transparent 78%); mask-image: radial-gradient(ellipse at 50% 0%, #000 40%, transparent 78%); }
   .hero-glow { position: absolute; top: -140px; right: -80px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(224,161,0,.28), transparent 60%); filter: blur(20px); pointer-events: none; }
   .hero-in { position: relative; }
   .hero h1 { font-size: 60px; margin: 20px 0 0; }
   .hero .lead { color: rgba(255,255,255,.66); font-size: 19px; max-width: 640px; margin-top: 22px; }
   .hero-cta { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
-  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; max-width: 760px; }
+  .hero-note { color: rgba(255,255,255,.4); font-size: 13px; margin-top: 14px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; max-width: 820px; }
   .hero-stats > div { border-left: 2px solid var(--brand); padding-left: 14px; }
   .hero-stats b { display: block; font-family: var(--display); font-size: 18px; }
   .hero-stats span { color: rgba(255,255,255,.5); font-size: 13px; }
-  @media (max-width: 720px) { .hero h1 { font-size: 38px; } .hero-stats { grid-template-columns: 1fr; gap: 12px; } }
 
-  .problem { max-width: 720px; }
-  .problem h2 { font-size: 40px; margin-top: 12px; }
+  .hero { padding-bottom: 72px; }
+
+  /* The screenshot straddles the dark hero and the light section below it */
+  .shot-strip {
+    padding: 0;
+    background: linear-gradient(to bottom, #12161f 0%, #12161f 42%, var(--canvas) 42%, var(--canvas) 100%);
+  }
+
+  @media (max-width: 720px) {
+    .hero { padding: 56px 0 48px; }
+    .hero h1 { font-size: 34px; }
+    .hero .lead { font-size: 16.5px; margin-top: 18px; }
+    .hero-cta { margin-top: 26px; }
+    .hero-stats { grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+  }
+
+  /* ---------- Proof band ---------- */
+  .band { background: var(--canvas); padding: 56px 0 40px; border-bottom: 1px solid var(--line); }
+  .band-in { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .band-item b { display: block; font-family: var(--display); font-size: 32px; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+  .band-item span { display: block; color: var(--muted); font-size: 13.5px; margin-top: 6px; }
+  .band-note { text-align: center; color: var(--muted); font-size: 12.5px; opacity: .8; margin-top: 32px; }
+  @media (max-width: 860px) { .band-in { grid-template-columns: 1fr 1fr; gap: 28px 24px; } }
+  @media (max-width: 720px) { .band { padding-top: 40px; } .band-item b { font-size: 26px; } }
+
+  /* ---------- Problem / compare ---------- */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 920px; margin: 0 auto; }
+  .cmp { border-radius: var(--radius); padding: 26px; border: 1px solid var(--line); background: #fff; }
+  .cmp-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 16px; }
+  .cmp-bad { background: var(--canvas); }
+  .cmp-bad .cmp-tag { background: rgba(18,22,31,.06); color: var(--muted); }
+  .cmp-good { border-color: rgba(224,161,0,.4); box-shadow: 0 14px 34px -18px rgba(224,161,0,.5); }
+  .cmp-good .cmp-tag { background: rgba(224,161,0,.14); color: #8a6200; }
+  .cmp ul { list-style: none; padding: 0; display: grid; gap: 12px; }
+  .cmp li { position: relative; padding-left: 26px; font-size: 15px; color: var(--muted); }
+  .cmp li::before { position: absolute; left: 0; top: 0; font-weight: 800; font-size: 14px; }
+  .cmp-bad li::before { content: "✕"; color: #b6bcc7; }
+  .cmp-good li::before { content: "✓"; color: var(--brand); }
+  .cmp-good li { color: var(--ink); font-weight: 500; }
+  @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+
   .chain-n { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--brand); letter-spacing: .1em; }
 
+  /* ---------- Product tour ---------- */
+  .tour { display: grid; grid-template-columns: .82fr 1.18fr; gap: 56px; align-items: center; margin-top: 76px; }
+  .tour .tour-txt { grid-column: 1; grid-row: 1; }
+  .tour .tour-img { grid-column: 2; grid-row: 1; }
+  /* Flipped rows keep the screenshot on the wide track — only the side changes */
+  .tour[data-flip="true"] { grid-template-columns: 1.18fr .82fr; }
+  .tour[data-flip="true"] .tour-txt { grid-column: 2; grid-row: 1; }
+  .tour[data-flip="true"] .tour-img { grid-column: 1; grid-row: 1; }
+  .tour h3 { font-size: 30px; margin-top: 12px; }
+  .tour p { color: var(--muted); font-size: 17px; margin-top: 14px; }
+  .tour .ticks { margin-top: 22px; }
+  .tour .ticks li { font-size: 15px; }
+  @media (max-width: 900px) {
+    .tour, .tour[data-flip="true"] { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; }
+    .tour .tour-txt, .tour[data-flip="true"] .tour-txt { grid-column: 1; grid-row: 1; }
+    .tour .tour-img, .tour[data-flip="true"] .tour-img { grid-column: 1; grid-row: 2; }
+    .tour h3 { font-size: 24px; }
+    .tour p { font-size: 16px; }
+  }
+
+  .sec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 76px; }
+  .sec h3 { font-size: 20px; margin-top: 20px; }
+  .sec p { color: var(--muted); font-size: 15px; margin-top: 8px; }
+  @media (max-width: 720px) { .sec-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 56px; } }
+
+  /* ---------- Features ---------- */
   .feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 40px; }
   .feat-dot { width: 40px; height: 40px; border-radius: 11px; background: linear-gradient(145deg, var(--brand-2), var(--brand)); margin-bottom: 16px; box-shadow: 0 6px 16px rgba(224,161,0,.28); }
   .feat h3 { font-size: 19px; margin-bottom: 8px; }
@@ -159,7 +410,17 @@ const features = [
   @media (max-width: 860px) { .feats { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .feats { grid-template-columns: 1fr; } }
 
+  /* ---------- Roles ---------- */
+  .roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .role { border-top: 2px solid var(--brand); padding-top: 18px; }
+  .role h3 { font-size: 17px; }
+  .role p { color: var(--muted); font-size: 14.5px; margin-top: 8px; }
+  @media (max-width: 860px) { .roles { grid-template-columns: 1fr 1fr; gap: 28px 20px; } }
+  @media (max-width: 520px) { .roles { grid-template-columns: 1fr; } }
+
   .center { text-align: center; margin-top: 40px; }
+
+  /* ---------- White-label ---------- */
   .wl-in { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
   .wl-in h2 { font-size: 34px; margin-top: 12px; }
   .wl-in .ticks { margin-top: 22px; }
@@ -170,9 +431,23 @@ const features = [
   .wl-foot { color: rgba(255,255,255,.45); font-size: 13px; margin-top: 16px; }
   @media (max-width: 820px) { .wl-in { grid-template-columns: 1fr; gap: 32px; } }
 
+  /* ---------- FAQ ---------- */
+  .faq-in { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+  .faq-in .head { margin: 0; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; list-style: none; padding: 20px 0; font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:hover { color: var(--brand); }
+  .chev { flex: none; width: 12px; height: 12px; border-right: 2px solid var(--brand); border-bottom: 2px solid var(--brand); transform: rotate(45deg) translate(-2px, -2px); transition: transform .18s ease; }
+  .faq details[open] .chev { transform: rotate(225deg) translate(-2px, -2px); }
+  .faq details p { color: var(--muted); font-size: 15.5px; padding-bottom: 20px; max-width: 62ch; }
+  @media (max-width: 820px) { .faq-in { grid-template-columns: 1fr; gap: 24px; } }
+
+  /* ---------- Final CTA ---------- */
   .cta { position: relative; background: #12161f; color: #fff; text-align: center; padding: 90px 0; overflow: hidden; }
   .cta-in { position: relative; max-width: 680px; margin: 0 auto; }
   .cta h2 { font-size: 38px; }
   .cta p { color: rgba(255,255,255,.6); font-size: 18px; margin-top: 14px; }
   .center-cta { justify-content: center; }
+  @media (max-width: 720px) { .cta h2 { font-size: 28px; } .cta p { font-size: 16px; } }
 </style>

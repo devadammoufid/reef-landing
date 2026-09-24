@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import Shot from "../components/Shot.astro"
 const CONTACT = "/contact"
+const DEMO = "https://reef.moaj.info/login"
 
 const stages = [
   { n: "01", t: "Extraction", cap: "Ce que Reef capture", items: ["Tonnage extrait par site et par matériau", "Équipements et équipes mobilisés", "Sites miniers et rapports journaliers"], feeds: "Alimente le transport et le bilan de production." },
@@ -35,6 +37,22 @@ const pillars = [
       <span class="eyebrow">La plateforme</span>
       <h1>Une chaîne minière, connectée de bout en bout.</h1>
       <p>De l'extraction à l'expédition, chaque étape alimente la suivante. Reef réunit toute votre exploitation dans un seul écran — et en temps réel.</p>
+      <div class="ph-cta">
+        <a class="btn btn-primary" href={CONTACT}>Demander une démo</a>
+        <a class="btn btn-ghost-dark" href={DEMO}>Essayer la démo en direct →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product screenshot, straddling the dark hero and the section below -->
+  <section class="shot-strip">
+    <div class="wrap">
+      <Shot
+        src="/shots/dashboard.webp"
+        alt="Tableau de bord Reef : la chaîne mine → port en temps réel, avec récupération usine, tonnage expédié et pipeline commercial."
+        url="reef.moaj.info"
+        eager={true}
+      />
     </div>
   </section>
 
@@ -63,6 +81,16 @@ const pillars = [
           <div class="step"><span class="step-n">{s.n}</span><div><h3>{s.t}</h3><p>{s.d}</p></div></div>
         ))}
       </div>
+      <div class="shot-duo">
+        <figure>
+          <Shot src="/shots/usine.webp" alt="Module usine de flottation de Reef : récupération par circuit et bilan métallurgique quotidien." url="reef.moaj.info/usine" class="on-light" />
+          <figcaption>Le bilan métallurgique, circuit par circuit.</figcaption>
+        </figure>
+        <figure>
+          <Shot src="/shots/port.webp" alt="Module port et expédition de Reef : chargement des navires par quai et tonnage par destination." url="reef.moaj.info/port" class="on-light" />
+          <figcaption>Les quais, les navires et le tonnage à bord.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -86,6 +114,15 @@ const pillars = [
 </Layout>
 
 <style>
+  .ph-cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .pagehero { padding-bottom: 64px; }
+  .shot-strip { padding: 0; background: linear-gradient(to bottom, #12161f 0%, #12161f 42%, var(--paper) 42%, var(--paper) 100%); }
+
+  .shot-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 56px; }
+  .shot-duo figure { margin: 0; }
+  .shot-duo figcaption { color: var(--muted); font-size: 14px; margin-top: 14px; }
+  @media (max-width: 760px) { .shot-duo { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; } }
+
   .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .stage { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
   .stage-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }

@@ -1,0 +1,85 @@
+---
+export interface Props {
+  src: string
+  alt: string
+  /** Address shown in the fake browser bar */
+  url?: string
+  /** Eager-load the hero shot, lazy everything else */
+  eager?: boolean
+  /** Intrinsic width/height of the asset, for layout stability */
+  width?: number
+  height?: number
+  class?: string
+}
+const {
+  src,
+  alt,
+  url = "reef.moaj.info",
+  eager = false,
+  width = 1920,
+  height = 1200,
+  class: klass = "",
+} = Astro.props
+---
+
+<figure class:list={["shot", klass]}>
+  <div class="shot-bar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="shot-url">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 10V8a6 6 0 1 1 12 0v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        <rect x="4" y="10" width="16" height="10" rx="2" fill="currentColor"></rect>
+      </svg>
+      {url}
+    </span>
+  </div>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={eager ? "eager" : "lazy"}
+    decoding={eager ? "sync" : "async"}
+    fetchpriority={eager ? "high" : "auto"}
+  />
+</figure>
+
+<style>
+  .shot {
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0e1117;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 70px -20px rgba(9, 12, 18, 0.5), 0 8px 24px -12px rgba(9, 12, 18, 0.4);
+  }
+  .shot-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px;
+    height: 34px;
+    background: #171c26;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.16); }
+  .shot-url {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 12px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 11.5px;
+    letter-spacing: 0.01em;
+  }
+  .shot img { width: 100%; height: auto; display: block; }
+
+  /* Light-surface variant for use on white/canvas sections */
+  :global(.shot.on-light) {
+    border-color: var(--line);
+    box-shadow: 0 24px 60px -24px rgba(18, 22, 31, 0.28), 0 4px 14px -8px rgba(18, 22, 31, 0.16);
+  }
+</style>
