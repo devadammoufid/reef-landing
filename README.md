@@ -13,6 +13,18 @@ npm run build      # static build → dist/
 npm run preview    # preview the build
 ```
 
+## Deploy
+
+The project is linked to Vercel (`ysra/reef-landing`) via the CLI — pushing to GitHub does
+**not** trigger a deploy. Vercel builds remotely, so no local build is needed.
+
+```bash
+npm run deploy:preview   # preview deployment (unique URL)
+npm run deploy           # production → reef-landing-one.vercel.app
+```
+
+First time on a new machine: `npm i -g vercel && vercel login && vercel link`.
+
 ## Product screenshots
 
 The homepage and `/plateforme` show real screens from the demo tenant, not mockups.

@@ -4,7 +4,6 @@
   <url><loc>https://reef-landing-one.vercel.app/plateforme</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://reef-landing-one.vercel.app/fonctionnalites</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://reef-landing-one.vercel.app/solutions</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://reef-landing-one.vercel.app/tarifs</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://reef-landing-one.vercel.app/contact</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://reef-landing-one.vercel.app/mentions-legales</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://reef-landing-one.vercel.app/confidentialite</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
